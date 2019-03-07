@@ -1,5 +1,6 @@
 package com.example.biometricmanager.generics
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -15,6 +16,7 @@ abstract class BiometricBaseDialog : DialogFragment() {
 
     @LayoutRes
     var layout: Int = 0
+    lateinit var activity: Activity
     protected var baseView: View? = null
 
 

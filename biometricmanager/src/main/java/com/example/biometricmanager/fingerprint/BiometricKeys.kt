@@ -22,7 +22,7 @@ open class BiometricKeys {
             if (!biometricKey.isEmpty() && !encodeKey.isEmpty() && biometricKey != encodeKey) {
                 BiometricKeys.KEY_ALIAS_DEFAULT_BIOMETRIC_LIB = biometricKey
                 BiometricKeys.KEY_ALIAS_DEFAULT_ENCODE = encodeKey
-            } else EqualKeyException()
+            } else throw EqualKeyException()
         }
     }
 

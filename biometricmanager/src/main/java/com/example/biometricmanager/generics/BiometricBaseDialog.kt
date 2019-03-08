@@ -5,9 +5,12 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.annotation.RequiresApi
 import android.support.v4.app.DialogFragment
+import android.support.v4.app.FragmentManager
 import android.view.*
 import com.example.biometricmanager.exceptions.NonLayoutException
 
@@ -19,6 +22,9 @@ abstract class BiometricBaseDialog : DialogFragment() {
     lateinit var activity: Activity
     protected var baseView: View? = null
 
+    open fun show(fragmentManager: FragmentManager) {
+        this.show(fragmentManager, "BiometricDialog")
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -49,11 +55,12 @@ abstract class BiometricBaseDialog : DialogFragment() {
         return baseView
     }
 
+
     abstract fun initAuth()
 
     open fun Context.createBiometricView() {
         if (baseView == null) {
-            baseView = LayoutInflater.from(this).inflate(baseView, null, false)
+            baseView = LayoutInflater.from(this).inflate(layout, null, false)
         }
     }
 

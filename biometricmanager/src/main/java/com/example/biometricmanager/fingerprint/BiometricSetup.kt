@@ -11,10 +11,10 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
 @RequiresApi(api = Build.VERSION_CODES.M)
-open class BiometricSetup() {
+internal open class BiometricSetup {
 
-    private lateinit var cipher: Cipher
-    private lateinit var keyStore: KeyStore
+    internal lateinit var cipher: Cipher
+    internal lateinit var keyStore: KeyStore
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)

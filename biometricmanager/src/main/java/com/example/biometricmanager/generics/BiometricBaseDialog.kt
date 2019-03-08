@@ -20,7 +20,7 @@ abstract class BiometricBaseDialog : DialogFragment() {
     @LayoutRes
     var layout: Int = 0
     lateinit var activity: Activity
-    protected var baseView: View? = null
+    var baseView: View? = null
 
     open fun show(fragmentManager: FragmentManager) {
         this.show(fragmentManager, "BiometricDialog")

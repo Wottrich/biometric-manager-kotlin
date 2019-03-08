@@ -13,6 +13,7 @@ import android.support.annotation.RequiresApi
 import android.support.annotation.RequiresPermission
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.example.biometricmanager.exceptions.CancelButtonException
@@ -22,6 +23,7 @@ import com.example.biometricmanager.fingerprint.BiometricSetup
 import com.example.biometricmanager.fingerprint.isBiometricAvailable
 import com.example.biometricmanager.generics.BiometricBaseDialog
 import java.lang.Exception
+import kotlin.properties.Delegates
 
 
 @SuppressLint("ValidFragment")
@@ -41,6 +43,12 @@ class BiometricDialog(activity: Activity, layout: Int) : BiometricBaseDialog(), 
     private lateinit var setup: BiometricSetup
     private lateinit var manager: FingerprintManagerCompat
     private lateinit var helper: BiometricHelper
+
+    init {
+        this.activity = activity
+        this.layout = layout
+        this.activity.createBiometricView()
+    }
 
     constructor(activity: Activity, @LayoutRes layout: Int, btnCancel: Button) : this (activity, layout) {
         this.activity = activity
@@ -155,5 +163,13 @@ class BiometricDialog(activity: Activity, layout: Int) : BiometricBaseDialog(), 
         this.onInformation?.invoke(message)
     }
     //</editor-folder>
+
+    fun setCanceledButton (btn: Button?) {
+        this.btnCancel = btn
+    }
+
+    fun setCanceledButton (btn: TextView) {
+        this.tvCancel = tvCancel
+    }
 
 }

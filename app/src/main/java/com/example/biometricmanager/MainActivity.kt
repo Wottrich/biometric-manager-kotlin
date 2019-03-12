@@ -17,15 +17,27 @@ class MainActivity : AppCompatActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val dialog = BiometricDialog(this, R.layout.activity_main)
-
             val btn = dialog.baseView?.findViewById<Button>(R.id.btnTest)
+
             btn?.setBackgroundColor(Color.RED)
             dialog.setCanceledButton(btn)
 
-
             dialog.setOnSuccess {
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+
             }
+
+            dialog.setOnError { messageError, dismiss ->
+
+            }
+
+            dialog.setOnInformation {
+
+            }
+
+            dialog.setOnFailed {
+
+            }
+
             dialog.show(this.supportFragmentManager)
         }
     }
